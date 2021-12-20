@@ -149,7 +149,7 @@ export default function InfoForm() {
       console.log(obj)
       setFormData(obj)
     };
-    //router.push('/calender');
+    router.push('/calender');
   };
 
   useEffect(() => {

@@ -11,11 +11,11 @@
 
 html {
   scroll-behavior: smooth;
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  background: linear-gradient(90deg, #56ab2f 0%, #a8e063 100%);
 }
 
 .gradient {
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  background: linear-gradient(90deg, #56ab2f 0%, #a8e063 100%);
 }
 
 body{
