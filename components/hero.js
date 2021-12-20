@@ -26,12 +26,11 @@ export default function Hero() {
             //Left Col
           }
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p className="uppercase tracking-loose w-full">E WASTE MANAGEMENT</p>
             <h1 className="my-4 text-5xl font-bold leading-tight">
               Welcome to IEBC appointment portal
             </h1>
             <p className="leading-normal text-2xl mb-8">
-              Official IEBC portal. Schedule an appointment for our services
+              Official IEBC diaspora portal. Schedule an appointment for our services
             </p>
             <button
               onClick={handleScrollToElement}
@@ -84,11 +83,11 @@ export default function Hero() {
               hover:no-underline">
                 <div className="w-full font-bold text-xl text-center 
                 text-gray-800 px-6">
-                  Change of Voting station
+                  New Voter Registration
                 </div>
-                <p className="text-gray-800 text-center w-full text-base 
-                px-6 mb-5">
-                  Take a picture of your electronics
+                <p className="text-gray-800 text-center w-full text-base px-6 
+                mb-5">
+                  Book an appointment to register in person as a voter.
                 </p>
               </a>
             </div>
@@ -112,11 +111,11 @@ export default function Hero() {
               hover:no-underline">
                 <div className="w-full font-bold text-xl text-center 
                 text-gray-800 px-6">
-                  New Voter Registration
+                  Change of Voting station
                 </div>
-                <p className="text-gray-800 text-center w-full text-base px-6 
-                mb-5">
-                  Upload the picture of the device. You will recieve a QR Code.
+                <p className="text-gray-800 text-center w-full text-base 
+                px-6 mb-5">
+                  Book an appointment to change your voting station.
                 </p>
               </a>
             </div>
@@ -144,7 +143,7 @@ export default function Hero() {
                 </div>
                 <p className="text-gray-800 text-base text-center w-full px-6 
                 mb-5">
-                  Drop off the device at our nearest partner store
+                  Book an appointment to update your voter details.
                 </p>
               </a>
             </div>

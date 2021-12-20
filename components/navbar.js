@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { withRouter } from 'next/router'
+import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
 
 function Navbar({ router }) {
 
@@ -60,6 +61,9 @@ function Navbar({ router }) {
           <div className="flex-1 flex items-center justify-start sm:items-stretch">
             <Link href='/'>
               <div className="flex-shrink-0 flex items-center font-extrabold text-4xl">
+                <div className='flex rounded-full overflow-hidden w-10 h-10 mr-3 items-center justify-center relative'>
+                  <Image src={'/assets/logo.png'} layout='fill'/>
+                </div>
                 IEBC
               </div>
             </Link>
