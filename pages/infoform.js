@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from "recoil";
 import { useRouter } from 'next/router';
 import { formData, infoform } from '../atoms/formAtom';
+import { states } from '../atoms/states';
 
 export default function InfoForm() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function InfoForm() {
     data: null, state: null
   });
   const [loc, setLoc] = useState({
-    data: 'Los Angeles, L.A.', state: 'success'
+    data: 'AL, Alabama', state: 'success'
   });
   const [done, setDone] = useState(false);
   const [complete, setComplete] = useRecoilState(infoform);
@@ -146,7 +147,6 @@ export default function InfoForm() {
         expiry: expiry.data,
         state: loc.data
       }
-      console.log(obj)
       setFormData(obj)
     };
     router.push('/calender');
@@ -308,9 +308,11 @@ export default function InfoForm() {
                 id="grid-state"
                 onChange={e => change("select", e, setLoc)}
               >
-                <option>Los Angeles, L.A.</option>
-                <option>New York, N.Y.</option>
-                <option>Washington, D.C.</option>
+                {
+                  states && states.map((s,i)=>(
+                    <option key={i}>{s}</option>
+                  ))
+                }
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 
               flex items-center px-2 text-gray-700">

@@ -111,7 +111,7 @@ export default function Hero() {
               hover:no-underline">
                 <div className="w-full font-bold text-xl text-center 
                 text-gray-800 px-6">
-                  Change of Voting station
+                  Change of Voting Station
                 </div>
                 <p className="text-gray-800 text-center w-full text-base 
                 px-6 mb-5">
@@ -139,7 +139,7 @@ export default function Hero() {
               hover:no-underline">
                 <div className="w-full font-bold text-xl text-center 
                 text-gray-800 px-6">
-                  Change of Voter details
+                  Change of Voter Details
                 </div>
                 <p className="text-gray-800 text-base text-center w-full px-6 
                 mb-5">
