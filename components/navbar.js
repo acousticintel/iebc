@@ -62,7 +62,7 @@ function Navbar({ router }) {
             <Link href='/'>
               <div className="flex-shrink-0 flex items-center font-extrabold text-4xl">
                 <div className='flex rounded-full overflow-hidden w-10 h-10 mr-3 items-center justify-center relative'>
-                  <Image src={'/assets/logo.png'} layout='fill'/>
+                  <Image src={'/assets/logo.png'} layout='fill' />
                 </div>
                 IEBC
               </div>
@@ -72,7 +72,11 @@ function Navbar({ router }) {
               //sm:block 
             }
           </div>
+            <div className='gradient-text text-gray-800 font-bold'>
+              Independent Electoral and Boundaries Commission
+            </div>
         </div>
+        
       </div>
       <div className="w-full bg-gray-200 h-1 transparent">
         <div className="gradient h-1 rounded-full w-1/3" />
