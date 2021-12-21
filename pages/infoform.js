@@ -149,7 +149,7 @@ export default function InfoForm() {
         expiry: expiry.data,
         state: loc.data
       }
-      setFormData(obj);
+      setFormData({...formdata, obj});
       setComplete('info');
       router.push('/calender');
     };

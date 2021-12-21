@@ -10,6 +10,7 @@ import { doc, collection, addDoc, updateDoc, serverTimestamp } from "@firebase/f
 import { ref, getDownloadURL, uploadString } from "@firebase/storage";
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
+import { locations } from '../atoms/states';
 
 export default function Calender() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function Calender() {
   const [appDate, setAppDate] = useState(new Date());
   const [appTime, setAppTime] = useState('');
   const [loading, setLoading] = useState(false);
+  const [locMap, setLocMap] = useState([]);
 
   const change = (type, event, setFunction, maxValue) => {
     switch (type) {
@@ -124,9 +126,10 @@ export default function Calender() {
   }
 
   useEffect(() => {
-    //console.log(formdata)
+    if(formdata.country)
+      setLocMap(locations[formdata.country])
     //console.log(complete)
-  }, [])
+  }, [formdata])
 
   return (
     <>
@@ -151,9 +154,11 @@ export default function Calender() {
                   id="grid-state"
                   onChange={e => change("select", e, setLoc)}
                 >
-                  <option>Kenya Embassy in Washington</option>
-                  <option>Kenya Consulate General in Los Angeles</option>
-                  <option>Kenya Consulate General in New York</option>
+                  {
+                    locMap && locMap.map((l,i)=>(
+                      <option key={i}>{l}</option>
+                    )) 
+                  }
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 
               flex items-center px-2 text-gray-700">

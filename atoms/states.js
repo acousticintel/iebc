@@ -59,3 +59,11 @@ export const states = [
     "WI, Wisconsin",
     "WY, Wyoming"
 ]
+
+export const locations = {
+    uae:['Kenya Embassy in Abu Dhabi'],
+    uk:['Kenya High Commission United Kingdom'],
+    us:['Kenya Embassy in Washington','Kenya Consulate General in Los Angeles','Kenya Consulate General in New York'],
+    can:['Kenyan High Commission in Ottawa'],
+    qat:['Kenya Embassy in Doha'],
+}
