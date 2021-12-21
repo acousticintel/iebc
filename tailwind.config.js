@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Montserrat', 'san-serif'],
+        body: ['Source Sans Pro', 'san-serif'],
       },
       colors: {
         'dark-blue': "#0F1624"

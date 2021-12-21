@@ -11,7 +11,6 @@ export default function Hero() {
   }
 
   const handleScrollToElement = () => {
-    console.log('clicked')
     window.scrollTo(0,( -50 + servicesRef.current.offsetTop));
   }
 

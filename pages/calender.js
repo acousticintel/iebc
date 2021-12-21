@@ -71,7 +71,7 @@ export default function Calender() {
     uploadPost();
   };
 
-  const successAlert = () =>{
+  const successAlert = () => {
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -81,7 +81,7 @@ export default function Calender() {
     })
   }
 
-  const errorAlert = () =>{
+  const errorAlert = () => {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -101,7 +101,7 @@ export default function Calender() {
       user: 'temp',
       timestamp: serverTimestamp()
     })
-    
+
     successAlert();
 
     const qrRef = ref(storage, 'temp' + '/' + docRef.id + '/qr');
@@ -131,6 +131,10 @@ export default function Calender() {
   return (
     <>
       <div className='calender-page'>
+        <div>
+          <h1 className="section-title">Appointment Information</h1>
+          <div className="section-divider" />
+        </div>
         <form className="w-full max-w-lg mx-auto">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
