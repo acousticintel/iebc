@@ -21,6 +21,51 @@ export default function Calender() {
   const [appTime, setAppTime] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const change = (type, event, setFunction, maxValue) => {
+    switch (type) {
+      case "email":
+        if (verifyEmail(event.target.value)) {
+          setFunction({
+            data: event.target.value, state: 'success'
+          })
+        } else {
+          setFunction({
+            data: event.target.value, state: 'error'
+          })
+        }
+        break;
+      case "length":
+        if (verifyLength(event.target.value, maxValue)) {
+          setFunction({
+            data: event.target.value, state: 'success'
+          })
+        } else {
+          setFunction({
+            data: event.target.value, state: 'error'
+          })
+        }
+        break;
+      case "number":
+        if (verifyNumber(event.target.value, maxValue)) {
+          setFunction({
+            data: event.target.value, state: 'success'
+          })
+        } else {
+          setFunction({
+            data: event.target.value, state: 'error'
+          })
+        }
+        break;
+      case "select":
+        setFunction({
+          data: event.target.value, state: 'success'
+        })
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleData = (e) => {
     e.preventDefault();
     uploadPost();
@@ -102,9 +147,9 @@ export default function Calender() {
                   id="grid-state"
                   onChange={e => change("select", e, setLoc)}
                 >
-                  <option>"DC, District Of Columbia"</option>
-                  <option>"LA, Louisiana"</option>
-                  <option>"NY, New York"</option>
+                  <option>DC, District Of Columbia</option>
+                  <option>LA, Louisiana</option>
+                  <option>NY, New York</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 
               flex items-center px-2 text-gray-700">
