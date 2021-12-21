@@ -63,11 +63,19 @@ function Navbar({ router }) {
           }
           <div className="flex-1 flex items-center justify-center sm:justify-start sm:items-stretch">
             <Link href='/'>
-              <div className="flex-shrink-0 flex items-center font-bold text-lg">
+              <div className="flex-shrink-0 items-center font-bold text-lg hidden sm:flex">
                 <div className='flex rounded-full overflow-hidden w-10 h-10 mr-3 items-center justify-center relative'>
                   <Image src={'/assets/logo.png'} layout='fill' />
                 </div>
                 Independent Electoral and Boundaries Commission
+              </div>
+            </Link>
+            <Link href='/'>
+              <div className="flex-shrink-0 flex items-center font-bold text-lg sm:hidden">
+                <div className='flex rounded-full overflow-hidden w-10 h-10 mr-3 items-center justify-center relative'>
+                  <Image src={'/assets/logo.png'} layout='fill' />
+                </div>
+                IEBC
               </div>
             </Link>
             {
