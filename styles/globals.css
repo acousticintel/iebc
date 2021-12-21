@@ -37,7 +37,7 @@ body{
 
 .flag{
   @apply border-8 h-28 w-28 rounded-full overflow-hidden relative mx-auto
-  transition-all duration-500 ease-in-out;
+  transition-all duration-500 ease-in-out hover:border-green-400;
 }
 
 .flag.selected{

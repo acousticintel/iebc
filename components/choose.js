@@ -4,24 +4,37 @@ import { useRouter } from 'next/router';
 import { formData } from '../atoms/formAtom';
 import { useEffect, useState } from "react";
 
-export default function Choose({ servicesRef }) {
+export default function Choose({ servicesRef, countryRef }) {
   const router = useRouter();
-  const [formdata, setFormData] = useState('');
+  const [formdata, setFormData] = useRecoilState(formData);
 
   const handleClick = e => {
     e.preventDefault();
     router.push('/infoform');
   }
 
-  const handleCntryClick = cntry => {
-    setFormData(cntry);
+  const handleCntryClick = country => {
+    setFormData({ ...formdata, country });
   }
 
-  useEffect(()=>{console.log(formData)},[formData])
+  const handleScrollToElement = () => {
+    window.scrollTo(0, (-50 + servicesRef.current.offsetTop));
+  }
+
+  useEffect(() => {
+    let timer1;
+    if (formdata?.country?.length > 0) {
+      timer1 = setInterval(() => handleScrollToElement(), 300);
+    }
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [formdata]);
 
   return (
     <>
-      <section ref={servicesRef} className="bg-white py-8">
+      <section ref={countryRef} className="bg-white py-8">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
           <h1 className="w-full my-2 text-5xl font-bold leading-tight 
           text-center text-gray-800">
@@ -33,41 +46,41 @@ export default function Choose({ servicesRef }) {
           </div>
           <div className='w-full px-20 flex flex-wrap justify-around'>
             <div className='flex flex-col text-gray-800 text-center'
-              onClick={()=>handleCntryClick('uae')}
+              onClick={() => handleCntryClick('uae')}
             >
-              <div className={`flag ${formdata === 'uae' && 'selected'}`}>
+              <div className={`flag ${formdata?.country === 'uae' && 'selected'}`}>
                 <Image src={'/assets/uae.png'} layout='fill' />
               </div>
               <p className='text-lg mt-2 font-medium'>United Arab Emirates</p>
             </div>
             <div className='flex flex-col text-gray-800 text-center'
-            onClick={()=>handleCntryClick('uk')}
+              onClick={() => handleCntryClick('uk')}
             >
-              <div className={`flag ${formdata === 'uk' && 'selected'}`}>
+              <div className={`flag ${formdata?.country === 'uk' && 'selected'}`}>
                 <Image src={'/assets/uk.png'} layout='fill' />
               </div>
               <p className='text-lg mt-2 font-medium'>United Kingdom</p>
             </div>
             <div className='flex flex-col text-gray-800 text-center'
-            onClick={()=>handleCntryClick('us')}
+              onClick={() => handleCntryClick('us')}
             >
-              <div className={`flag ${formdata === 'us' && 'selected'}`}>
+              <div className={`flag ${formdata?.country === 'us' && 'selected'}`}>
                 <Image src={'/assets/us.png'} layout='fill' />
               </div>
               <p className='text-lg mt-2 font-medium'>United States of America</p>
             </div>
             <div className='flex flex-col text-gray-800 text-center'
-            onClick={()=>handleCntryClick('can')}
+              onClick={() => handleCntryClick('can')}
             >
-              <div className={`flag ${formdata === 'can' && 'selected'}`}>
+              <div className={`flag ${formdata?.country === 'can' && 'selected'}`}>
                 <Image src={'/assets/canada.png'} layout='fill' />
               </div>
               <p className='text-lg mt-2 font-medium'>Canada</p>
             </div>
             <div className='flex flex-col text-gray-800 text-center'
-            onClick={()=>handleCntryClick('qat')}
+              onClick={() => handleCntryClick('qat')}
             >
-              <div className={`flag ${formdata === 'qat' && 'selected'}`}>
+              <div className={`flag ${formdata?.country === 'qat' && 'selected'}`}>
                 <Image src={'/assets/qatar.png'} layout='fill' />
               </div>
               <p className='text-lg mt-2 font-medium'>Qatar</p>
@@ -75,7 +88,7 @@ export default function Choose({ servicesRef }) {
           </div>
         </div>
       </section>
-      <section className="bg-white py-8">
+      <section ref={servicesRef} className="bg-white py-8">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
           <h1 className="w-full my-2 text-5xl font-bold leading-tight 
         text-center text-gray-800">

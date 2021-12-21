@@ -3,7 +3,8 @@ import Choose from './choose';
 import Image from 'next/image';
 
 export default function Hero() {
-  const servicesRef = useRef(null)
+  const countryRef = useRef(null);
+  const servicesRef = useRef(null);
 
   const handleScrollToElement = () => {
     window.scrollTo(0, (-50 + servicesRef.current.offsetTop));
@@ -59,7 +60,7 @@ export default function Hero() {
           </g>
         </svg>
       </div>
-      <Choose servicesRef={servicesRef} />
+      <Choose servicesRef={servicesRef} countryRef={countryRef} />
       {
         //Change the colour #f8fafc to match the previous section colour
       }
