@@ -131,7 +131,7 @@ export default function Calender() {
   return (
     <>
       <div className='calender-page'>
-        <div>
+        <div className="w-full max-w-lg mx-auto">
           <h1 className="section-title">Appointment Information</h1>
           <div className="section-divider" />
         </div>
@@ -151,9 +151,9 @@ export default function Calender() {
                   id="grid-state"
                   onChange={e => change("select", e, setLoc)}
                 >
-                  <option>DC, District Of Columbia</option>
-                  <option>LA, Louisiana</option>
-                  <option>NY, New York</option>
+                  <option>Kenya Embassy in Washington</option>
+                  <option>Kenya Consulate General in Los Angeles</option>
+                  <option>Kenya Consulate General in New York</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 
               flex items-center px-2 text-gray-700">

@@ -293,12 +293,13 @@ export default function InfoForm() {
             ${expiry.state === 'success' ? 'border-green-500 focus:border-green-500' : 'border-red-500 focus:border-red-500'}`}
                 id="grid-last-name"
                 type="text"
-                placeholder="Doe"
+                placeholder="12/2021"
                 onChange={e => change("length", e, setExpiry, 1)}
               />
-              {expiry.state === 'error' && <p className="text-red-500 text-xs italic">
-                Please fill out this field.
-              </p>}
+              {
+                expiry.state === 'error' && <p className="text-red-500 text-xs italic">
+                  Please fill out this field.
+                </p>}
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
