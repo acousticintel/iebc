@@ -7,7 +7,7 @@ export default function Hero() {
   const servicesRef = useRef(null);
 
   const handleScrollToElement = () => {
-    window.scrollTo(0, (-50 + servicesRef.current.offsetTop));
+    window.scrollTo(0, (-50 + countryRef.current.offsetTop));
   }
 
   return (
