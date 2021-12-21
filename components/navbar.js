@@ -61,13 +61,13 @@ function Navbar({ router }) {
             //change location of logo if links exist
             //justify-center sm:justify-start
           }
-          <div className="flex-1 flex items-center justify-start sm:items-stretch">
+          <div className="flex-1 flex items-center justify-center sm:justify-start sm:items-stretch">
             <Link href='/'>
-              <div className="flex-shrink-0 flex items-center font-extrabold text-4xl">
+              <div className="flex-shrink-0 flex items-center font-bold text-lg">
                 <div className='flex rounded-full overflow-hidden w-10 h-10 mr-3 items-center justify-center relative'>
                   <Image src={'/assets/logo.png'} layout='fill' />
                 </div>
-                IEBC
+                Independent Electoral and Boundaries Commission
               </div>
             </Link>
             {
@@ -75,9 +75,6 @@ function Navbar({ router }) {
               //sm:block 
             }
           </div>
-            <div className='gradient-text text-gray-800 font-bold'>
-              Independent Electoral and Boundaries Commission
-            </div>
         </div>
       </div>
       <div className="w-full bg-gray-200 h-1 transparent">
