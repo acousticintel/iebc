@@ -6,7 +6,7 @@ export default function Hero() {
   const servicesRef = useRef(null)
 
   const handleScrollToElement = () => {
-    window.scrollTo(0,( -50 + servicesRef.current.offsetTop));
+    window.scrollTo(0, (-50 + servicesRef.current.offsetTop));
   }
 
   return (
@@ -21,15 +21,15 @@ export default function Hero() {
           }
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
             <h1 className="my-4 text-5xl font-bold leading-tight">
-              Welcome to IEBC appointment portal
+              Welcome to IEBC appointment booking portal
             </h1>
             <p className="leading-normal text-2xl mb-8">
-              Official IEBC diaspora portal. Schedule an appointment for our services
+              This portal allows Kenyan Citizens in the diaspora to schedule an appointment for IEBC services.
             </p>
             <button
               onClick={handleScrollToElement}
               className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              View Services
+              Choose Country
             </button>
           </div>
           {
@@ -59,7 +59,7 @@ export default function Hero() {
           </g>
         </svg>
       </div>
-      <Choose servicesRef={servicesRef}/>
+      <Choose servicesRef={servicesRef} />
       {
         //Change the colour #f8fafc to match the previous section colour
       }

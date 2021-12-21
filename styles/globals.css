@@ -36,9 +36,5 @@ body{
 }
 
 .flag{
-  @apply border-8 h-28 w-28 rounded-full overflow-hidden relative flex flex-col
-}
-
-.flag p{
-  @apply text-gray-800
+  @apply border-8 h-28 w-28 rounded-full overflow-hidden relative;
 }

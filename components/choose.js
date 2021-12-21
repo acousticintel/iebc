@@ -23,20 +23,35 @@ export default function Choose({ servicesRef }) {
             rounded-t"/>
           </div>
           <div className='w-full px-20 flex flex-wrap justify-around'>
-            <div className=' flag'>
-              <Image src={'/assets/uae.png'} layout='fill' />
+            <div className='flex flex-col text-gray-800 text-center'>
+              <div className=' flag'>
+                <Image src={'/assets/uae.png'} layout='fill' />
+              </div>
+              <p className='text-lg mt-2 font-medium'>United Arab Emirates</p>
             </div>
-            <div className=' flag'>
+            <div className='flex flex-col text-gray-800 text-center'>
+              <div className=' flag'>
               <Image src={'/assets/uk.png'} layout='fill' />
+              </div>
+              <p className='text-lg mt-2 font-medium'>United Kingdom</p>
             </div>
-            <div className=' flag'>
-              <Image src={'/assets/us.png'} layout='fill' />
+            <div className='flex flex-col text-gray-800 text-center'>
+              <div className=' flag'>
+                <Image src={'/assets/us.png'} layout='fill' />
+              </div>
+              <p className='text-lg mt-2 font-medium'>United States of America</p>
             </div>
-            <div className=' flag'>
-              <Image src={'/assets/canada.png'} layout='fill' />
+            <div className='flex flex-col text-gray-800 text-center'>
+              <div className=' flag'>
+                <Image src={'/assets/canada.png'} layout='fill' />
+              </div>
+              <p className='text-lg mt-2 font-medium'>Canada</p>
             </div>
-            <div className=' flag'>
-              <Image src={'/assets/qatar.png'} layout='fill' />
+            <div className='flex flex-col text-gray-800 text-center'>
+              <div className=' flag'>
+                <Image src={'/assets/qatar.png'} layout='fill' />
+              </div>
+              <p className='text-lg mt-2 font-medium'>Qatar</p>
             </div>
           </div>
         </div>
