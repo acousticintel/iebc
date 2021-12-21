@@ -1,0 +1,29 @@
+.calender-page {
+  @apply bg-white min-h-screen text-gray-800 pt-28 px-4 pb-10;
+}
+
+.calender{
+  @apply !w-4/5 !border-0 !mx-auto;
+}
+
+.tile {
+  height: 75px;
+  @apply mx-auto;
+}
+
+.times-container{
+  @apply grid grid-cols-4 gap-2
+}
+
+.time-container{
+  @apply bg-gray-100 border border-gray-300 px-2 py-1
+  rounded-lg hover:bg-white hover:border-gray-400
+  text-center font-medium
+  transition-all duration-500 ease-in-out
+}
+
+.time-container.selected{
+  @apply text-white font-bold bg-green-600 border-green-600
+}
+
+

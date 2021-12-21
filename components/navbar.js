@@ -2,11 +2,13 @@ import { Fragment, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Transition } from '@headlessui/react';
 import Link from 'next/link';
-import { withRouter } from 'next/router'
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
+import { withRouter } from 'next/router';
+import { useRecoilState } from "recoil";
+import { infoform } from '../atoms/formAtom';
 
 function Navbar({ router }) {
 
+  const [complete, setComplete] = useRecoilState(infoform);
   const [dropOpen, setDropOpen] = useState(false);
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
@@ -46,6 +48,7 @@ function Navbar({ router }) {
     };
   }, [clientWindowHeight, router]);
 
+
   return (
     <nav
       className={`fixed w-full z-30 top-0  
@@ -76,10 +79,14 @@ function Navbar({ router }) {
               Independent Electoral and Boundaries Commission
             </div>
         </div>
-        
       </div>
       <div className="w-full bg-gray-200 h-1 transparent">
-        <div className="gradient h-1 rounded-full w-1/3" />
+        <div className={`gradient h-1 rounded-full 
+          ${!complete && 'w-0'}
+          ${complete === 'info' && 'w-1/3'}
+          ${complete === 'calender' && 'w-3/3'}
+          ${complete === 'help' && 'w-full'}
+        `} />
       </div>
     </nav>
   )
