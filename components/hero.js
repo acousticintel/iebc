@@ -24,10 +24,10 @@ export default function Hero() {
           <div className="flex flex-col w-full max-w-lg mx-auto 
           justify-center items-start text-center mb-6">
             <h1 className="my-4 text-5xl font-bold leading-tight text-center">
-              Welcome to IEBC appointment booking portal
+              Appointment Portal
             </h1>
             <p className="leading-normal text-center w-full mt-5 text-2xl mb-8">
-              Appointment Portal for IEBC Services.
+              Diaspora IEBC services.
             </p>
             <button
               onClick={handleScrollToElement}

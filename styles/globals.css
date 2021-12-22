@@ -20,7 +20,23 @@ html {
 }
 
 body{
-  @apply font-body leading-normal tracking-normal text-white gradient;
+  @apply font-body leading-normal tracking-normal 
+  text-white gradient custom-scroll;
+}
+
+/* width */
+.custom-scroll::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+/* Track */
+.custom-scroll::-webkit-scrollbar-track {
+  @apply bg-white;
+}
+
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 hover:bg-gray-500 rounded-full bg-opacity-50;
 }
 
 .section-divider{

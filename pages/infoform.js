@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { useRouter } from 'next/router';
 import { formData, infoform } from '../atoms/formAtom';
 import { states } from '../atoms/states';
+import SelectDropdown from '../components/selectdropdown';
 
 export default function InfoForm() {
   const router = useRouter();
@@ -21,7 +22,10 @@ export default function InfoForm() {
   const [passport, setPassport] = useState({
     data: null, state: null
   });
-  const [expiry, setExpiry] = useState({
+  const [expiryMon, setExpiryMon] = useState({
+    data: null, state: null
+  });
+  const [expiryYrs, setExpiryYrs] = useState({
     data: null, state: null
   });
   const [loc, setLoc] = useState({
@@ -92,13 +96,24 @@ export default function InfoForm() {
         break;
       case "select":
         setFunction({
-          data: event.target.value, state: 'success'
+          data: event.value, state: 'success'
         })
         break;
       default:
         break;
     }
   };
+
+  const yrArray = () => {
+    const d = new Date().getFullYear();
+    let a = [];
+
+    for (let i = d; i < (d + 20); i++) {
+      a.push(i)
+    }
+
+    return a;
+  }
 
   const isValidated = () => {
     if (
@@ -107,7 +122,8 @@ export default function InfoForm() {
       email.state === "success" &&
       phone.state === "success" &&
       passport.state === "success" &&
-      expiry.state === "success" &&
+      expiryMon.state === "success" &&
+      expiryYrs.state === "success" &&
       loc.state === "success"
     ) {
       return true;
@@ -127,8 +143,11 @@ export default function InfoForm() {
       if (passport.state !== "success") {
         setPassport({ ...passport, state: 'error' });
       }
-      if (expiry.state !== "success") {
-        setExpiry({ ...expiry, state: 'error' });
+      if (expiryMon.state !== "success") {
+        setExpiryMon({ ...expiryMon, state: 'error' });
+      }
+      if (expiryYrs.state !== "success") {
+        setExpiryYrs({ ...expiryYrs, state: 'error' });
       }
       if (loc.state !== "success") {
         setLoc({ ...loc, state: 'error' });
@@ -146,7 +165,8 @@ export default function InfoForm() {
         email: email.data,
         phone: phone.data,
         passport: passport.data,
-        expiry: expiry.data,
+        expiryMon: expiryMon.data,
+        expiryYrs: expiryYrs.data,
         state: loc.data
       }
       setFormData({ ...formdata, ...obj });
@@ -162,12 +182,14 @@ export default function InfoForm() {
       email.state === "success" &&
       phone.state === "success" &&
       passport.state === "success" &&
-      expiry.state === "success" &&
+      expiryMon.state === "success" &&
+      expiryYrs.state === "success" &&
       loc.state === "success"
     ) {
       setDone(true);
     }
-  }, [firstName, surName, email, phone, passport, expiry, loc]);
+  }, [firstName, surName, email, phone, passport, expiryMon, expiryYrs, loc]);
+
   return (
     <>
       <div className='infoform-page'>
@@ -285,23 +307,27 @@ export default function InfoForm() {
               </p>}
             </div>
             <div className="w-full md:w-1/2 px-3">
-              <label className="block uppercase tracking-wide
-            text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
+              <label className="block uppercase tracking-wide text-gray-700 
+            text-xs font-bold mb-2" htmlFor="grid-first-name">
                 Expiry Date
               </label>
-              <input className={`appearance-none block w-full bg-gray-200 
-            text-gray-700 border rounded py-3 px-4 
-            mb-3 leading-tight focus:outline-none focus:border-gray-300 
-            focus:bg-white
-            ${!expiry.state && 'border-gray-500'}
-            ${expiry.state === 'success' ? 'border-green-500 focus:border-green-500' : 'border-red-500 focus:border-red-500'}`}
-                id="grid-last-name"
-                type="text"
-                placeholder="12/2021"
-                onChange={e => change("length", e, setExpiry, 1)}
-              />
+              <div className='flex'>
+                <SelectDropdown
+                  value={expiryMon.data}
+                  list={Array.from(Array(13).keys()).slice(1)}
+                  change={change}
+                  setFunc={setExpiryMon}
+                />
+                <div className='w-3' />
+                <SelectDropdown
+                  value={expiryYrs.data}
+                  list={yrArray()}
+                  change={change}
+                  setFunc={setExpiryYrs}
+                />
+              </div>
               {
-                expiry.state === 'error' && <p className="text-red-500 text-xs italic">
+                expiryMon.state === 'error' && <p className="text-red-500 text-xs italic">
                   Please fill out this field.
                 </p>}
             </div>
@@ -312,30 +338,7 @@ export default function InfoForm() {
             text-xs font-bold mb-2" htmlFor="grid-state">
                 State
               </label>
-              <div className="relative">
-                <select className="block appearance-none w-full bg-gray-200 
-              border border-gray-200 text-gray-700 py-3 px-4 pr-8 
-              rounded leading-tight focus:outline-none focus:bg-white 
-              focus:border-gray-500"
-                  value={loc.data}
-                  id="grid-state"
-                  onChange={e => change("select", e, setLoc)}
-                >
-                  {
-                    states && states.map((s, i) => (
-                      <option key={i}>{s}</option>
-                    ))
-                  }
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 
-              flex items-center px-2 text-gray-700">
-                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 
-                  6.586 4.343 8z" />
-                  </svg>
-                </div>
-              </div>
+              <SelectDropdown value={loc.data} list={states} change={change} setFunc={setLoc} />
             </div>
           </div>
           <div className='flex flex-wrap -mx-3 mb-6 w-full items-center justify-center'>
