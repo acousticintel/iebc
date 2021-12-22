@@ -3,12 +3,11 @@ import Image from 'next/image';
 import { Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { infoform } from '../atoms/formAtom';
 
 function Navbar({ router }) {
-
-  const [complete, setComplete] = useRecoilState(infoform);
+  const complete = useRecoilValue(infoform);
   const [dropOpen, setDropOpen] = useState(false);
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
@@ -89,8 +88,8 @@ function Navbar({ router }) {
         <div className={`gradient h-1 rounded-full 
           ${!complete && 'w-0'}
           ${complete === 'info' && 'w-1/3'}
-          ${complete === 'calender' && 'w-3/3'}
-          ${complete === 'help' && 'w-full'}
+          ${complete === 'calender' && 'w-2/3'}
+          ${complete === 'complete' && 'w-full'}
         `} />
       </div>
     </nav>

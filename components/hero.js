@@ -20,24 +20,19 @@ export default function Hero() {
           {
             //Left Col
           }
-          <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <h1 className="my-4 text-5xl font-bold leading-tight">
+          <div className="flex flex-col w-full max-w-lg mx-auto 
+          justify-center items-start text-center mb-6">
+            <h1 className="my-4 text-5xl font-bold leading-tight text-center">
               Welcome to IEBC appointment booking portal
             </h1>
-            <p className="leading-normal text-2xl mb-8">
-              This portal allows Kenyan Citizens in the diaspora to schedule an appointment for IEBC services.
+            <p className="leading-normal text-center w-full mt-5 text-2xl mb-8">
+              Appointment Portal for IEBC Services.
             </p>
             <button
               onClick={handleScrollToElement}
-              className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              className="mx-auto hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               Choose Country
             </button>
-          </div>
-          {
-            //Right Col
-          }
-          <div className="w-full md:w-3/5 py-6 text-center">
-            <img className="w-full md:w-4/5 z-50" src="/assets/hero.png" />
           </div>
         </div>
       </div>

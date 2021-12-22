@@ -4,6 +4,7 @@
 @import "./profile.css";
 @import "./navbar.css";
 @import "./infoform.css";
+@import "./confirm.css";
 
 @tailwind base;
 @tailwind components;

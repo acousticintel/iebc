@@ -1,15 +1,18 @@
 import { useRecoilState } from "recoil";
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { formData } from '../atoms/formAtom';
+import { formData, infoform } from '../atoms/formAtom';
 import { useEffect, useState } from "react";
 
 export default function Choose({ servicesRef, countryRef }) {
   const router = useRouter();
   const [formdata, setFormData] = useRecoilState(formData);
+  const [complete, setComplete] = useRecoilState(infoform);
 
-  const handleClick = e => {
+  const handleClick = (e, service) => {
     e.preventDefault();
+    setFormData({ ...formdata, service });
+    setComplete('info');
     router.push('/infoform');
   }
 
@@ -38,7 +41,7 @@ export default function Choose({ servicesRef, countryRef }) {
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
           <h1 className="w-full my-2 text-5xl font-bold leading-tight 
           text-center text-gray-800">
-            Choose a Country
+            Choose Country
           </h1>
           <div className="w-full mb-4">
             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 
@@ -92,7 +95,7 @@ export default function Choose({ servicesRef, countryRef }) {
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
           <h1 className="w-full my-2 text-5xl font-bold leading-tight 
         text-center text-gray-800">
-            Choose a Service
+            Choose Service
           </h1>
           <div className="w-full mb-4">
             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 
@@ -117,7 +120,7 @@ export default function Choose({ servicesRef, countryRef }) {
             <div className="flex-none mt-auto bg-white rounded-b 
           rounded-t-none overflow-hidden p-6">
               <div className="flex items-center justify-center">
-                <button onClick={handleClick} className="mx-auto lg:mx-0 
+                <button onClick={(e) => handleClick(e, 'new')} className="mx-auto lg:mx-0 
               gradient text-white font-bold rounded-full my-6 py-4 
               px-8 shadow-lg focus:outline-none focus:shadow-outline 
               transform transition hover:scale-105 duration-300 ease-in-out">
@@ -145,7 +148,7 @@ export default function Choose({ servicesRef, countryRef }) {
             <div className="flex-none mt-auto bg-white rounded-b 
           rounded-t-none overflow-hidden p-6">
               <div className="flex items-center justify-center">
-                <button onClick={handleClick} className="mx-auto lg:mx-0 
+                <button onClick={(e) => handleClick(e, 'station')} className="mx-auto lg:mx-0 
               gradient text-white font-bold rounded-full my-6 py-4 
               px-8 shadow-lg focus:outline-none focus:shadow-outline 
               transform transition hover:scale-105 duration-300 ease-in-out">
@@ -173,7 +176,7 @@ export default function Choose({ servicesRef, countryRef }) {
             <div className="flex-none mt-auto bg-white rounded-b 
           rounded-t-none overflow-hidden p-6">
               <div className="flex items-center justify-center">
-                <button onClick={handleClick} className="mx-auto lg:mx-0 
+                <button onClick={(e) => handleClick(e, 'details')} className="mx-auto lg:mx-0 
               gradient text-white font-bold rounded-full my-6 py-4 
               px-8 shadow-lg focus:outline-none focus:shadow-outline 
               transform transition hover:scale-105 duration-300 ease-in-out">
