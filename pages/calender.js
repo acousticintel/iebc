@@ -59,9 +59,7 @@ export default function Calender() {
         }
         break;
       case "select":
-        setFunction({
-          data: event.value, state: 'success'
-        })
+        setFunction(event.value)
         break;
       default:
         break;
@@ -166,7 +164,7 @@ export default function Calender() {
               <div className="relative">
                 {
                   locMap.length > 0 && (
-                    <SelectDropdown value={loc?.data} list={locMap} change={change} setFunc={setLoc}/>
+                    <SelectDropdown value={loc} list={locMap} change={change} setFunc={setLoc}/>
                   )}
               </div>
             </div>

@@ -8,6 +8,10 @@ import { addresses } from '../atoms/states';
 export default function Confirm() {
   const formdata = useRecoilValue(formData);
 
+  useEffect(() => {
+    console.log(formdata)
+  }, [formdata])
+
   return (
     <div className='confirm-page'>
       <div className='h-20 w-40 relative mx-auto'>
@@ -36,9 +40,11 @@ export default function Confirm() {
       {formdata?.service === 'new' && <p>New Voter Registration</p>}
       {formdata?.service === 'station' && <p>Change of Voting Station</p>}
       {formdata?.service === 'details' && <p>Change of Voter Details</p>}
-      <div className='mt-10 h-20 w-20 flex justify-center mx-auto'>
-        {<img src={formdata.qr} />}
-      </div>
+      {formdata.qr &&
+        <div className='mt-10 h-20 w-20 flex justify-center mx-auto'>
+          {<img src={formdata.qr} />}
+        </div>
+      }
       <p className='text-center mt-3 text-xs'>Thank you. See you on {new Intl.DateTimeFormat('en-US').format(formdata?.appDate)}.
         <span className='text-green-500'> YOUR<span className='font-bold'>VOTE</span>YOUR<span className='font-bold'>FUTURE</span></span></p>
     </div>
