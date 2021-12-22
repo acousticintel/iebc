@@ -21,7 +21,8 @@ export default function Choose({ servicesRef, countryRef }) {
   }
 
   const handleScrollToElement = () => {
-    window.scrollTo(0, (-50 + servicesRef.current.offsetTop));
+    servicesRef.current.scrollIntoView()
+    //window.scrollTo(0, (-50 + servicesRef.current.offsetTop));
   }
 
   useEffect(() => {
