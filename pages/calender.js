@@ -17,7 +17,7 @@ export default function Calender() {
   const [complete, setComplete] = useRecoilState(infoform);
   const [formdata, setFormData] = useRecoilState(formData);
 
-  const [loc, setLoc] = useState(null);
+  const [loc, setLoc] = useState('');
   const [appDate, setAppDate] = useState(new Date());
   const [appTime, setAppTime] = useState('');
   const [loading, setLoading] = useState(false);
@@ -166,7 +166,7 @@ export default function Calender() {
               <div className="relative">
                 {
                   locMap.length > 0 && (
-                    <SelectDropdown value={loc.data} list={locMap} change={change} setFunc={setLoc}/>
+                    <SelectDropdown value={loc?.data} list={locMap} change={change} setFunc={setLoc}/>
                   )}
               </div>
             </div>
