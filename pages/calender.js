@@ -166,7 +166,7 @@ export default function Calender() {
               <div className="relative">
                 {
                   locMap.length > 0 && (
-                    <SelectDropdown value={loc} list={locMap} change={change} setFunc={setLoc}/>
+                    <SelectDropdown value={loc.data} list={locMap} change={change} setFunc={setLoc}/>
                   )}
               </div>
             </div>
