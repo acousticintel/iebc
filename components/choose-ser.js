@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { formData, infoform } from '../atoms/formAtom';
 
-const ChooseService = forwardRef(({ onBackClick }, ref) => {
+const ChooseService = forwardRef((ref) => {
   const router = useRouter();
   const [formdata, setFormData] = useRecoilState(formData);
   const [complete, setComplete] = useRecoilState(infoform);
@@ -118,4 +118,6 @@ const ChooseService = forwardRef(({ onBackClick }, ref) => {
   )
 });
 
+//fix forwardref "Component definition is missing display name" error
+ChooseService.displayName = "ChooseService";
 export default ChooseService;

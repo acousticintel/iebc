@@ -81,4 +81,6 @@ const ChooseCountry = forwardRef(({ onBackClick }, ref) => {
   )
 });
 
+//fix forwardref "Component definition is missing display name" error
+ChooseCountry.displayName = "ChooseCountry";
 export default ChooseCountry;
