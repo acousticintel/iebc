@@ -8,7 +8,7 @@ import { infoform } from '../atoms/formAtom';
 
 function Navbar({ router }) {
   const complete = useRecoilValue(infoform);
-  const [barOpen, setBarOpen] = useState('');
+  const [barOpen, setBarOpen] = useState('hidden');
   const [barLen, setBarLen] = useState('w-0');
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
