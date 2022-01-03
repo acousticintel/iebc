@@ -8,7 +8,7 @@ import { infoform } from '../atoms/formAtom';
 
 function Navbar({ router }) {
   const complete = useRecoilValue(infoform);
-  const [dropOpen, setDropOpen] = useState(false);
+  const [barOpen, setBarOpen] = useState('');
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
   const [backgroundTransparacy, setBackgroundTransparacy] = useState('bg-transparent');
@@ -24,17 +24,14 @@ function Navbar({ router }) {
     setClientWindowHeight(window.scrollY);
   };
 
-  const handleClick = e => {
-    e.preventDefault();
-    router.push('/profile');
-  }
-
   useEffect(() => {
     if (router.pathname !== '/') {
       setBoxShadow('drop-shadow-lg');
       setTextColor('text-gray-800')
       setBackgroundTransparacy('bg-white');
+      setBarOpen('');
     } else {
+      setBarOpen('hidden');
       if (clientWindowHeight > 10) {
         setBoxShadow('drop-shadow-lg');
         setTextColor('text-gray-800')
@@ -84,7 +81,7 @@ function Navbar({ router }) {
           </div>
         </div>
       </div>
-      <div className="w-full bg-gray-200 h-1 transparent">
+      <div className={`w-full bg-gray-200 h-1 transparent ${barOpen}`}>
         <div className={`gradient h-1 rounded-full 
           ${!complete && 'w-0'}
           ${complete === 'info' && 'w-1/3'}
