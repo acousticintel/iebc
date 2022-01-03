@@ -9,6 +9,7 @@ import { infoform } from '../atoms/formAtom';
 function Navbar({ router }) {
   const complete = useRecoilValue(infoform);
   const [barOpen, setBarOpen] = useState('');
+  const [barLen, setBarLen] = useState('w-0');
   const [clientWindowHeight, setClientWindowHeight] = useState("");
 
   const [backgroundTransparacy, setBackgroundTransparacy] = useState('bg-transparent');
@@ -19,6 +20,27 @@ function Navbar({ router }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   });
+
+  useEffect(() => {
+    let timer1;
+
+    function setbarlen(len) {
+      timer1 = setInterval(() => setBarLen(len), 300);
+    }
+
+
+    if (complete === 'info') {
+      setbarlen('w-1/3')
+    } else if (complete === 'calender') {
+      setbarlen('w-2/3')
+    } else if (complete === 'complete') {
+      setbarlen('w-full')
+    }
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [complete])
 
   const handleScroll = () => {
     setClientWindowHeight(window.scrollY);
@@ -82,12 +104,7 @@ function Navbar({ router }) {
         </div>
       </div>
       <div className={`w-full bg-gray-200 h-1 transparent ${barOpen}`}>
-        <div className={`gradient h-1 rounded-full 
-          ${!complete && 'w-0'}
-          ${complete === 'info' && 'w-1/3'}
-          ${complete === 'calender' && 'w-2/3'}
-          ${complete === 'complete' && 'w-full'}
-        `} />
+        <div className={`gradient h-1 rounded-full transition-all duration-500 ${barLen}`} />
       </div>
     </nav>
   )
