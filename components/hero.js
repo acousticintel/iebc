@@ -1,14 +1,26 @@
 import { useRef } from 'react';
-import Choose from './choose';
 import Image from 'next/image';
+import ChooseCountry from './choose-con';
+import ChooseService from './choose-ser';
 
 export default function Hero() {
   const countryRef = useRef(null);
   const servicesRef = useRef(null);
 
-  const handleScrollToElement = () => {
-    countryRef.current.scrollIntoView()
-    //window.scrollTo(0, (-50 + countryRef.current.offsetTop));
+  const handleServiceScrollToElement = () => {
+    servicesRef.current.scrollIntoView({
+      block: "nearest",
+      inline: "center",
+      behavior: "smooth",
+    })
+  }
+
+  const handleCountryScrollToElement = () => {
+    countryRef.current.scrollIntoView({
+      block: "nearest",
+      inline: "center",
+      behavior: "smooth",
+    })
   }
 
   return (
@@ -30,7 +42,7 @@ export default function Hero() {
               Diaspora IEBC services.
             </p>
             <button
-              onClick={handleScrollToElement}
+              onClick={handleCountryScrollToElement}
               className="mx-auto hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               Choose Country
             </button>
@@ -56,7 +68,8 @@ export default function Hero() {
           </g>
         </svg>
       </div>
-      <Choose servicesRef={servicesRef} countryRef={countryRef} />
+      <ChooseCountry ref={countryRef} onBackClick={handleServiceScrollToElement} />
+      <ChooseService ref={servicesRef} />
       {
         //Change the colour #f8fafc to match the previous section colour
       }
